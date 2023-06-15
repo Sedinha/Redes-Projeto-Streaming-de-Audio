@@ -138,14 +138,14 @@ feito = False
 musica = None
 
 while not feito:
-    print(" __________________________________________________________\n|1.Play              2. Resume     3. Restart    4. Stop        |\n|5. Loop       6. Pause      7. Lista      8. Send Command|\n|         9. Change(msc)       10. List_Dipo              |\n|___________________11. Quit______________________________|")
+    print("___________________________________________________________\n|   1.Play        2. Resume     3. Restart    4. Stop     |\n|        5. Loop       6. Pause      7. Lista             |\n|         8. Change(msc)       9. List_Dipo               |\n|___________________10. Quit______________________________|")
     comando = input("Digite um comando: \n").lower()
     '''	
-	print(" __________________________________________________________")
-    print("|1.Play        2. Resume     3. Restart    4. Stop        |")
-    print("|5. Loop       6. Pause      7. Lista      8. Send Command|")
-    print("|         9. Change(msc)       10. List_Dipo              |")"
-    print("|___________________11. Quit______________________________|")
+	print("___________________________________________________________")
+    print("|   1.Play        2. Resume     3. Restart    4. Stop     |")
+    print("|        5. Loop       6. Pause      7. Lista             |")
+    print("|         8. Change(msc)       9. List_Dipo               |")"
+    print("|___________________10. Quit______________________________|")
     '''
     if comando == "pause" or comando == "6":
         if play:
@@ -155,7 +155,7 @@ while not feito:
         if play:
             print("Setting resume")
             pause = False
-    elif comando == "change" or comando == "9":
+    elif comando == "change" or comando == "8":
         if play:
             nova_musica = input("Digite o nome da nova musica: ").lower()
             musica = nova_musica
@@ -200,7 +200,7 @@ while not feito:
         getListaMsc(socketCliente)
         for i in listaCacheLocal:
             print(i)
-    elif comando == "quit" or comando == "11":
+    elif comando == "quit" or comando == "10":
         print(f"Sending {comando} to server")
         sendDados(socketCliente, comando)
         resp = receberDados(socketCliente)
@@ -213,7 +213,7 @@ while not feito:
             break
         else:
             print(resp)
-    elif comando == "lista_dispositivos" or comando == "10":
+    elif comando == "lista_dispositivos" or comando == "9":
         sendDados(socketCliente, 'lista_dispositivos')
         devices = receberDados(socketCliente)
         print("\n")
