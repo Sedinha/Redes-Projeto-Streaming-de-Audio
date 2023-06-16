@@ -2,7 +2,6 @@ import socket
 import pyaudio
 import time
 import threading
-import json
 # Codigo integralmente feito por Luiz Fernando Sperandio David
 
 MENSAGEM_FIM_DADOS_MUSICA = "track_data_end"
@@ -181,6 +180,7 @@ while not feito:
             if musica not in listaCacheLocal:
                 print(
                     f"Musica '{musica}' não encontrada. Please send 'lista' para ver a lista de musicas")
+                musica = None
                 continue
             if not musica in cacheLocal:
                 print(f"Loading track '{musica}'")
@@ -194,12 +194,12 @@ while not feito:
         else:
             print("Nenhuma musica selecionada. Por favor colocar o nome da musica.")
             musica = input("Coloque o nome da musica: ").lower()
-            print("Por favor ")
+            print("Por favor digite 'Play' para tocar a musica.")
     elif comando == "lista" or comando == "7":
-        imprimirBiblioteca()
         getListaMsc(socketCliente)
+        imprimirBiblioteca()
         for i in listaCacheLocal:
-            print(i)
+            print(f'\t     {i} \t')
     elif comando == "quit" or comando == "10":
         print(f"Sending {comando} to server")
         sendDados(socketCliente, comando)

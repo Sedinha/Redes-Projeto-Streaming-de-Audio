@@ -2,7 +2,6 @@ import socket
 import wave
 import os
 from threading import Thread
-import json
 # Codigo integralmente feito por Luiz Fernando Sperandio David
 
 
@@ -46,16 +45,13 @@ def checkExisteMusica(mscEscolhida):
     musicas = os.listdir("./Biblioteca")
     print(f'lista das musicas {musicas}')
     for (musica) in (musicas):
-        nome_musica, extensao = os.path.splitext(
-            musica
-        )  # percorre a /Biblioteca para achar a musica escolhida pelo cliente
-        if mscEscolhida.lower() == nome_musica.lower(
-        ):  # mscEscolhidaa padronizada
+        # percorre a /Biblioteca para achar a musica escolhida pelo cliente
+        nome_musica, extensao = os.path.splitext(musica)
+        if mscEscolhida.lower() == nome_musica.lower():  # mscEscolhidaa padronizada
             print("song found")
             mscEscolhida = musica  # armazena novamente a mscEscolhida
             return True, mscEscolhida
-        else:
-            return False, ""
+    return False, mscEscolhida
 
 
 def baixarMusicaCliente(mscEscolhida, socketCliente):
