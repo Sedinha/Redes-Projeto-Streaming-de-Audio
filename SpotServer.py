@@ -151,6 +151,20 @@ def clienttread(socketCliente, enderecoCliente):
                     if enderecoCliente[0] == enderecoCliente1 and enderecoCliente[1] == enderecoClientes:
                         dispositivos_conectados.remove(dispositivo)
             break
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
+            feito = True
+            socketCliente.close()
+            for dispositivo in dispositivos_conectados:
+                if len(dispositivo) == 3:
+                    enderecoCliente1, enderecoClientes, musica = dispositivo
+                    if enderecoCliente[0] == enderecoCliente1 and enderecoCliente[1] == enderecoClientes:
+                        dispositivos_conectados.remove(dispositivo)
+                else:
+                    enderecoCliente1, enderecoClientes = dispositivo
+                    if enderecoCliente[0] == enderecoCliente1 and enderecoCliente[1] == enderecoClientes:
+                        dispositivos_conectados.remove(dispositivo)
+            break
     return
 
 
