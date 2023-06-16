@@ -129,7 +129,7 @@ pause = False
 
 
 socketCliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socketCliente.connect(("10.0.0.7", 3213))
+socketCliente.connect(("10.0.0.7", 2635))
 nome_cliente = socket.gethostname()
 ip_cliente = socket.gethostbyname(nome_cliente)
 
